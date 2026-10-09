@@ -60,10 +60,34 @@ section{max-width:1400px;margin:auto;padding:24px 5vw 12px}.heading{display:flex
 @media(max-width:1050px){.hero-content{max-width:62%}.cyber-visual{right:2%;width:39%;top:22%;transform:scale(.94);transform-origin:top right}.visual-badges span{padding:6px;font-size:7px}}
 @media(max-width:760px){.hero{min-height:850px;align-items:flex-start;padding-top:135px}.hero-content{max-width:100%;width:100%}.cyber-visual{position:relative;right:auto;top:auto;width:100%;height:auto;margin:28px 0 0;transform:none;animation:visualAppear .8s .25s both}.visual-map{height:180px}.orbit-c{width:280px;height:180px}.orbit-b{width:230px;height:100px}.orbit-a{width:140px;height:140px}.terminal-body{font-size:9px}.visual-badges{margin-bottom:5px}.hero{display:block}.hero-content{margin-top:0}}
 @media(prefers-reduced-motion:reduce){.cyber-visual,.orbit,.core-shield,.node,.cursor,.scan-progress span{animation:none!important}.terminal-window{transform:none}}
+
+/* Ambient cinematic motion enhancements */
+.cyber-visual{animation:visualFloat 7s ease-in-out infinite,visualAppear 1s .2s both;transform-origin:center;will-change:transform}
+@keyframes visualFloat{0%,100%{translate:0 0}50%{translate:0 -8px}}
+.visual-map:after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(transparent 0%,#36c9ff08 48%,#36c9ff25 50%,#36c9ff08 52%,transparent 100%);background-size:100% 220%;animation:radarSweep 4.8s linear infinite;mix-blend-mode:screen}
+@keyframes radarSweep{from{background-position:0 -120%}to{background-position:0 120%}}
+.orbit-a{animation:orbitSpin 14s linear infinite,orbitBreath 4s ease-in-out infinite}
+.orbit-b{animation:orbitSpin 11s linear infinite reverse,orbitBreath 5s ease-in-out .5s infinite}
+.orbit-c{animation:orbitSpin 19s linear infinite,orbitBreath 6s ease-in-out 1s infinite}
+@keyframes orbitBreath{0%,100%{opacity:.45}50%{opacity:1}}
+.core-shield{animation:shieldPulse 3s ease-in-out infinite,shieldBob 4s ease-in-out infinite}
+@keyframes shieldBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+.terminal-window{animation:terminalHover 6s ease-in-out infinite}
+@keyframes terminalHover{0%,100%{box-shadow:0 12px 40px #0008,0 0 26px #0876b41a}50%{box-shadow:0 16px 45px #0009,0 0 34px #0876b43a}}
+.visual-badges span{animation:badgePulse 3.4s ease-in-out infinite}
+.visual-badges span:nth-child(2){animation-delay:.45s}.visual-badges span:nth-child(3){animation-delay:.9s}
+@keyframes badgePulse{0%,100%{border-color:#512534;color:#ff7182}50%{border-color:#a9435b;color:#ffa0ad}}
+/* Tiny ambient particles */
+.cyber-visual .particle{position:absolute;width:3px;height:3px;border-radius:50%;background:#69dfff;box-shadow:0 0 10px #69dfff;z-index:3;pointer-events:none;animation:particleDrift 6s ease-in-out infinite}
+.cyber-visual .particle.p1{left:9%;top:35%;animation-delay:-1s}.cyber-visual .particle.p2{left:84%;top:48%;animation-delay:-3s}.cyber-visual .particle.p3{left:38%;top:10%;animation-delay:-4.5s}.cyber-visual .particle.p4{left:70%;top:58%;animation-delay:-2s}
+@keyframes particleDrift{0%,100%{transform:translate3d(0,0,0);opacity:.15}50%{transform:translate3d(9px,-18px,0);opacity:1}}
+.hero .backdrop{animation:backdropBreath 9s ease-in-out infinite alternate}
+@keyframes backdropBreath{from{opacity:.55;transform:scale(1)}to{opacity:.95;transform:scale(1.07)}}
+@media(prefers-reduced-motion:reduce){.cyber-visual,.visual-map:after,.orbit-a,.orbit-b,.orbit-c,.core-shield,.terminal-window,.visual-badges span,.cyber-visual .particle,.hero .backdrop{animation:none!important;translate:none!important}}
 </style></head><body><div class="progress" id="progress"></div>
 <header id="header"><a class="brand" href="#top"><span class="mark">DK</span>DIPTANSU KUMAR</a><button class="menu" id="menu" aria-expanded="false" aria-label="Toggle menu">☰</button><nav class="nav" id="nav"><a href="#discover">Discover</a><a href="#domains">Arsenal</a><a href="#projects">Projects</a><a href="#experience">Experience</a><a href="#credentials">Credentials</a><a href="#about">About</a><a class="contact-nav" href="#contact">Contact</a></nav></header>
 <main id="top"><div class="hero"><div class="backdrop"></div><div class="grid"></div><div class="cyber-visual" aria-label="Animated cybersecurity operations visualization">
-  <div class="visual-top"><span class="live-dot"></span> SECURITY OPERATIONS <span class="visual-live">LIVE SIMULATION</span></div>
+  <i class="particle p1"></i><i class="particle p2"></i><i class="particle p3"></i><i class="particle p4"></i><div class="visual-top"><span class="live-dot"></span> SECURITY OPERATIONS <span class="visual-live">LIVE SIMULATION</span></div>
   <div class="visual-map"><div class="orbit orbit-a"></div><div class="orbit orbit-b"></div><div class="orbit orbit-c"></div><div class="core-shield">⌑<span>SECURE</span></div>
     <i class="node node-a"></i><i class="node node-b"></i><i class="node node-c"></i><i class="node node-d"></i><i class="node node-e"></i>
     <span class="map-label map-label-a">ATTACK SURFACE</span><span class="map-label map-label-b">THREAT SIGNAL</span><span class="map-label map-label-c">DEFENSE ACTIVE</span>
